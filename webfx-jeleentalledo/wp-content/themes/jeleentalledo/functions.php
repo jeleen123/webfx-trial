@@ -190,3 +190,18 @@ function get_includes( $name = null ) {
 	if ('' == locate_template($templates, true))
 		load_template( ABSPATH . WPINC . '/theme-compat/sidebar.php');
 }
+
+function add_link_atts($atts) {
+  $atts['class'] = "nav-link";
+  return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'add_link_atts');
+
+add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
+
+function special_nav_class ($classes, $item) {
+  if (in_array('current-menu-item', $classes) ){
+    $classes[] = 'active ';
+  }
+  return $classes;
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="tests/bootstrap.php">
+    <testsuites>
+        <testsuite name="WordPress Unit Tests">
+            <directory>tests</directory>
+        </testsuite>
+        <filter>
+            <whitelist processUncoveredFilesFromWhitelist="true">
+              <directory suffix=".php">C:/freelance/xamppp/htdocs/webfx-jeleentalledo/wp-content/themes/jeleentalledo</directory>
+            </whitelist>
+        </filter>
+
+    </testsuites>
+    <php>
+        <env name="WP_TESTS_DIR" value="C:/freelance/xamppp/htdocs/webfx-jeleentalledo/wordpress-develop/tests/phpunit" />
+        <env name="WP_PHP_BINARY" value="C:/freelance/xamppp/php/php.exe" />
+        <env name="WP_TESTS_TITLE" value="WordPress Tests" />
+        <env name="WP_TESTS_DB_NAME" value="wordpress_tests" />
+        <env name="WP_TESTS_DB_USER" value="root" />
+        <env name="WP_TESTS_DB_PASS" value="" />
+        <env name="WP_TESTS_DB_HOST" value="localhost" />
+    </php>
+</phpunit>

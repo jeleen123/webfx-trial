@@ -1,65 +1,44 @@
-<!-- Banner -->
-<div id="banner">
-<div class="wrapper">
-	<?php if (is_front_page() ) { ?>
-	<div class="bnr_main">
-		<div class="slider">
-			<div class="box_skitter box_skitter_large">
-				<ul>
-					<li><figure><img src="<?php bloginfo('template_url');?>/images/slider/1.jpg" class="random"  alt="x1"/></figure></li>
-					<li><figure><img src="<?php bloginfo('template_url');?>/images/slider/2.jpg" class="random"  alt="x2"/></figure></li>
-					<li><figure><img src="<?php bloginfo('template_url');?>/images/slider/3.jpg" class="random"  alt="x3"/></figure></li>
-					<li><figure><img src="<?php bloginfo('template_url');?>/images/slider/4.jpg" class="random"  alt="x4"/></figure></li>
-					<li><figure><img src="<?php bloginfo('template_url');?>/images/slider/5.jpg" class="random"  alt="x5"/></figure></li>
-					<li><figure><img src="<?php bloginfo('template_url');?>/images/slider/6.jpg" class="random"  alt="x6"/></figure></li>
-				</ul>
-			</div>
-			<ul class="rslides">
-				<li><figure><img src="<?php bloginfo('template_url');?>/images/slider/1.jpg" alt="x1"/></figure></li>
-				<li><figure><img src="<?php bloginfo('template_url');?>/images/slider/2.jpg" alt="x2"/></figure></li>
-				<li><figure><img src="<?php bloginfo('template_url');?>/images/slider/3.jpg" alt="x3"/></figure></li>
-				<li><figure><img src="<?php bloginfo('template_url');?>/images/slider/4.jpg" alt="x4"/></figure></li>
-				<li><figure><img src="<?php bloginfo('template_url');?>/images/slider/5.jpg" alt="x5"/></figure></li>
-				<li><figure><img src="<?php bloginfo('template_url');?>/images/slider/6.jpg" alt="x6"/></figure></li>
-			</ul>
-	  </div>
-			<figure><img src="<?php bloginfo('template_url');?>/images/slider/1.jpg" alt="x1" class="mobi_ban"></figure>
+<!-- Hero Content Start -->
+<?php if (is_front_page() ) { ?>
+	
+		<?php if( have_rows('hero_content') ):
+			$i = 1; // Set the increment variable
 
-	  <div class="bnr_info">
-					<?php dynamic_sidebar('bnr_info');?>
-					<h2></h2>
-	  </div>
-	</div>
+		echo '<div class="home-slider owl-carousel owl-theme">';
 
-	<!-- after bnr_info class -->
-<?php } else {?>
- <div class="non_ban">
-	 <figure>
-	 <?php if(is_home() && is_author() && is_category() && is_tag() && is_single()) { ?>
-	 <?php if (has_post_thumbnail() ) {?>
-	 <?php the_post_thumbnail('full');?>
-	 <?php }else{ ?>
-	 <img src="<?php bloginfo('template_url');?>/images/slider/nonhome-default.jpg" alt="lady caregiver with senior people smiling" />
-	 <?php } ?>
-	 <?php } elseif (has_post_thumbnail() ) { ?>
-	 <?php the_post_thumbnail('full');?>
-	 <?php } else { ?>
-	 <img src="<?php bloginfo('template_url'); ?>/images/slider/nonhome-default.jpg" alt="lady caregiver with senior people smiling">
-	 <?php } ?>
-	 </figure>
-	 <div class="page_title">
-		 <?php if(!is_home() && !is_author() && !is_category() && !is_tag() && !is_single()) { ?>
-			 <h1 class="h1_title"><?php the_title(); ?></h1>
-			 <?php echo do_shortcode("[short_title id='" . get_the_ID() . "']"); ?>
-		 <?php } else { ?>
-			 <h1 class="headings_title">Blog</h1>
-		 <?php } ?>
-	 </div>
- </div>
+						// loop through the rows of data for the tab header
+						while( have_rows('hero_content') ) : the_row();
 
+							$hero_image  = get_sub_field('hero_image');
+							$hero_small_title  = get_sub_field('hero_small_title');
+							$hero_description  = get_sub_field('hero_description');
+							$hero_link  = get_sub_field('hero_link');
+							$hero_link_cta  = get_sub_field('hero_link_cta');
+
+						?>
+					<div class="item <?php if($i == 1) echo 'active';?>">
+							<div class="slide-image">
+								<img src="<?php echo $hero_image;?>" alt="Slide" />
+							</div>
+						<div class="container">
+							<div class="slide-content">
+								<h4 class="optinal-h4"><?php echo $hero_small_title;?></h4>
+								<h3><?php echo $hero_description;?></h3>
+								<a href="<?php echo $hero_link;?>" class="btn btn-primary"><?php echo $hero_link_cta;?></a>
+							</div>
+						</div>
+					</div>
+					<?php   $i++; // Increment the increment variable
+
+						 endwhile; 
+		echo '</div>';
+		    
+				 endif; ?>
+				
+	<?php } else {?>
+				 <div class="non_ban">
+					 <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+				 </div>
  <?php }?>
-	<!-- end of after bnr_info class -->
+<!-- Hero Content End -->
 
-</div>
-</div>
-<!-- End Banner -->

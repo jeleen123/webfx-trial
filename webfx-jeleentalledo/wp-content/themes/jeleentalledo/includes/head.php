@@ -16,28 +16,20 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
+
 	<link rel="stylesheet" href="<?php bloginfo('template_url');?>/css/icomoon.css">
+	<link rel="stylesheet" href="<?php bloginfo('template_url');?>/css/bootstrap.min.css">
+		<!-- owlcarousel -->
+	<link rel="stylesheet" href="<?php bloginfo('template_url');?>/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="<?php bloginfo('template_url');?>/css/owl.theme.default.min.css">
 
-	<script>
-$(window).load(function() {
-  $('.flexslider').flexslider({
-    animation: "slide",
-    rtl: true
-  });
-});
-	
-</script>
-  <!-- Syntax Highlighter -->
-  <link href="http://flexslider.woothemes.com/css/shCore.css" rel="stylesheet" type="text/css" />
-  <link href="http://flexslider.woothemes.com/css/shThemeDefault.css" rel="stylesheet" type="text/css" />
-  <!-- Demo CSS -->
-	<link rel="stylesheet" href="http://flexslider.woothemes.com/css/flexslider.css" type="text/css" media="screen" />
-
-	<!-- Modernizr -->
-  <script src="http://flexslider.woothemes.com/js/modernizr.js"></script>
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 	<?php wp_head(); ?>
 
+
+	
 
 </head>
 
